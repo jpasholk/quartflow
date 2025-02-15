@@ -1,0 +1,47 @@
+---
+---
+
+<article>
+  <div class="quart-calculator grid">
+    <div>
+      <label for="totes">Number of Totes:</label>
+      <input type="number" id="totes" min="0" value="0">
+    </div>
+    <div>
+      <label for="cuft">Cubic Feet per Tote:</label>
+      <input type="number" id="cuft" min="0" step="0.1" value="0">
+    </div> 
+  </div>
+</article>
+
+<article>
+  <div class="quart-calculator grid">
+    <article>
+      <header>
+        <input type="checkbox" id="enable8qt">
+        <label for="slider8qt">8 QT Units:</label>
+      </header>
+      <input type="range" id="slider8qt" min="0" max="100" value="0">
+      <footer><span id="qty8qt">0</span></footer>
+    </article>
+    
+    <article>
+      <header>
+        <input type="checkbox" id="enable16qt">
+        <label for="slider16qt">16 QT Units:</label>
+      </header>
+      <input type="range" id="slider16qt" min="0" max="100" value="0">
+      <footer><span id="qty16qt">0</span></footer>
+    </article>
+    
+    <article>
+      <header>
+        <input type="checkbox" id="enable24qt">
+        <label for="slider24qt">24 QT Units:</label>
+      </header>
+      <input type="range" id="slider24qt" min="0" max="100" value="0">
+      <footer><span id="qty24qt">0</span></footer>
+    </article>
+  </div>
+</article>
+<script is:inline src="/scripts/quartflow.js"></script>
