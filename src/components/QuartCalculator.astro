@@ -23,7 +23,16 @@
         <label for="slider8qt">8 QT Units (max: <span id="max8qt">0</span>):</label>
       </header>
       <input type="range" id="slider8qt" min="0" max="100" value="0">
-      <footer><input type="number" id="qty8qt" min="0" value="0" class="qty-input"></footer>
+      <footer>
+        <input type="number" 
+          id="qty8qt" 
+          inputmode="numeric" 
+          pattern="[0-9]*" 
+          min="0" 
+          step="1" 
+          value="0" 
+          class="qty-input">
+      </footer>
     </article>
     
     <article>
@@ -32,7 +41,16 @@
         <label for="slider16qt">16 QT Units (max: <span id="max16qt">0</span>):</label>
       </header>
       <input type="range" id="slider16qt" min="0" max="100" value="0">
-      <footer><input type="number" id="qty16qt" min="0" value="0" class="qty-input"></footer>
+      <footer>
+        <input type="number" 
+          id="qty16qt" 
+          inputmode="numeric" 
+          pattern="[0-9]*" 
+          min="0" 
+          step="1" 
+          value="0" 
+          class="qty-input">
+      </footer>
     </article>
     
     <article>
@@ -41,18 +59,18 @@
         <label for="slider24qt">24 QT Units (max: <span id="max24qt">0</span>):</label>
       </header>
       <input type="range" id="slider24qt" min="0" max="100" value="0">
-      <footer><input type="number" id="qty24qt" min="0" value="0" class="qty-input"></footer>
+      <footer>
+        <input type="number" 
+          id="qty24qt" 
+          inputmode="numeric" 
+          pattern="[0-9]*" 
+          min="0" 
+          step="1" 
+          value="0" 
+          class="qty-input">
+      </footer>
     </article>
   </div>
 </article>
 <script is:inline src="/scripts/quartflow.js"></script>
 
-<!-- <style>
-  .qty-input {
-    width: 60px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 4px;
-  }
-</style> -->

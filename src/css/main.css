@@ -5,3 +5,21 @@
     justify-content: center;
     text-align: center;
 }
+.qty-input {
+    width: 60px;
+    height: 44px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 16px;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    margin: 0;
+  }
+  
+  .qty-input::-webkit-inner-spin-button,
+  .qty-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
