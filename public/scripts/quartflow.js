@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const max8qt = document.getElementById('max8qt');
   const max16qt = document.getElementById('max16qt');
   const max24qt = document.getElementById('max24qt');
+  const resetButton = document.getElementById('resetCalculator');
 
   let current8qt = 0;
   let current16qt = 0;
@@ -190,6 +191,32 @@ document.addEventListener('DOMContentLoaded', () => {
       updateSliders(e.target.id);
     });
   });
+
+  function resetCalculator() {
+    // Reset input values
+    totesInput.value = '1';
+    cuftInput.value = '62';
+
+    // Reset checkboxes
+    enable8qt.checked = false;
+    enable16qt.checked = false;
+    enable24qt.checked = false;
+
+    // Reset sliders and current values
+    slider8qt.value = '0';
+    slider16qt.value = '0';
+    slider24qt.value = '0';
+    current8qt = 0;
+    current16qt = 0;
+    current24qt = 0;
+
+    // Update UI
+    updateMaximums();
+    updateDisplayedQuantities();
+  }
+
+  // Add reset button event listener
+  resetButton.addEventListener('click', resetCalculator);
 
   updateSliders();
 });
