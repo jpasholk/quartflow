@@ -108,13 +108,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateDisplayedQuantities() {
-    qty8qt.textContent = enable8qt.checked ? slider8qt.value : '0';
-    qty16qt.textContent = enable16qt.checked ? slider16qt.value : '0';
-    qty24qt.textContent = enable24qt.checked ? slider24qt.value : '0';
+    if (enable8qt.checked) {
+      qty8qt.value = slider8qt.value;
+    } else {
+      qty8qt.value = '0';
+    }
+    
+    if (enable16qt.checked) {
+      qty16qt.value = slider16qt.value;
+    } else {
+      qty16qt.value = '0';
+    }
+    
+    if (enable24qt.checked) {
+      qty24qt.value = slider24qt.value;
+    } else {
+      qty24qt.value = '0';
+    }
     
     slider8qt.disabled = !enable8qt.checked;
     slider16qt.disabled = !enable16qt.checked;
     slider24qt.disabled = !enable24qt.checked;
+    
+    qty8qt.disabled = !enable8qt.checked;
+    qty16qt.disabled = !enable16qt.checked;
+    qty24qt.disabled = !enable24qt.checked;
   }
 
   [enable8qt, enable16qt, enable24qt].forEach(checkbox => {
@@ -142,8 +160,35 @@ document.addEventListener('DOMContentLoaded', () => {
     input.addEventListener('input', () => updateSliders());
   });
 
+  function handleInputChange(input, slider, currentValue) {
+    let value = parseInt(input.value) || 0;
+    let max = parseInt(slider.max) || 0;
+    value = Math.min(value, max);
+    
+    input.value = value;
+    slider.value = value;
+    
+    if (input.id === 'qty8qt') current8qt = value;
+    if (input.id === 'qty16qt') current16qt = value;
+    if (input.id === 'qty24qt') current24qt = value;
+    
+    updateMaximums();
+    updateDisplayedQuantities();
+  }
+
+  // Add input event listeners
+  qty8qt.addEventListener('input', () => handleInputChange(qty8qt, slider8qt, current8qt));
+  qty16qt.addEventListener('input', () => handleInputChange(qty16qt, slider16qt, current16qt));
+  qty24qt.addEventListener('input', () => handleInputChange(qty24qt, slider24qt, current24qt));
+
+  // Update slider event listeners
   [slider8qt, slider16qt, slider24qt].forEach(slider => {
-    slider.addEventListener('input', () => updateSliders(slider.id));
+    slider.addEventListener('input', (e) => {
+      if (e.target.id === 'slider8qt') qty8qt.value = e.target.value;
+      if (e.target.id === 'slider16qt') qty16qt.value = e.target.value;
+      if (e.target.id === 'slider24qt') qty24qt.value = e.target.value;
+      updateSliders(e.target.id);
+    });
   });
 
   updateSliders();
