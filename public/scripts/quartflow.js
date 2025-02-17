@@ -21,19 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return Math.floor(totes * cuft * 25.714);
   }
 
-  function calculateUsedQuarts() {
-    return (enable8qt.checked ? current8qt * 8 : 0) + 
-           (enable16qt.checked ? current16qt * 16 : 0) + 
-           (enable24qt.checked ? current24qt * 24 : 0);
-  }
-
   function updateSliders(changedSliderId) {
     let totalQuarts = calculateTotalQuarts();
     
     if (!changedSliderId) {
-      if (enable8qt.checked) slider8qt.max = Math.floor(totalQuarts / 8);
-      if (enable16qt.checked) slider16qt.max = Math.floor(totalQuarts / 16);
-      if (enable24qt.checked) slider24qt.max = Math.floor(totalQuarts / 24);
+      slider8qt.max = Math.floor(totalQuarts / 8);
+      slider16qt.max = Math.floor(totalQuarts / 16);
+      slider24qt.max = Math.floor(totalQuarts / 24);
       current8qt = 0;
       current16qt = 0;
       current24qt = 0;
@@ -58,26 +52,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let change = newValue - oldValue;
 
-    if (changedSliderId === 'slider16qt' && enable16qt.checked) {
-      current16qt = newValue;
-      if (enable8qt.checked) {
-        current8qt = Math.max(0, current8qt - (change * 2));
-        slider8qt.value = current8qt;
+    if (change > 0) {
+      if (changedSliderId === 'slider16qt' && enable16qt.checked) {
+        current16qt = newValue;
+        if (enable8qt.checked) {
+          let new8qt = Math.max(0, parseInt(slider8qt.value) - (change * 2));
+          slider8qt.value = new8qt;
+          current8qt = new8qt;
+        }
+      } 
+      else if (changedSliderId === 'slider24qt' && enable24qt.checked) {
+        current24qt = newValue;
+        if (enable16qt.checked) {
+          let new16qt = Math.max(0, parseInt(slider16qt.value) - Math.ceil(change * 1.5));
+          slider16qt.value = new16qt;
+          current16qt = new16qt;
+        }
+        if (enable8qt.checked) {
+          let new8qt = Math.max(0, parseInt(slider8qt.value) - (change * 3));
+          slider8qt.value = new8qt;
+          current8qt = new8qt;
+        }
       }
-    } 
-    else if (changedSliderId === 'slider24qt' && enable24qt.checked) {
-      current24qt = newValue;
-      if (enable16qt.checked) {
-        current16qt = Math.max(0, current16qt - Math.ceil(change * 1.5));
-        slider16qt.value = current16qt;
+      else if (changedSliderId === 'slider8qt' && enable8qt.checked) {
+        current8qt = newValue;
       }
-      if (enable8qt.checked) {
-        current8qt = Math.max(0, current8qt - (change * 3));
-        slider8qt.value = current8qt;
-      }
-    }
-    else if (changedSliderId === 'slider8qt' && enable8qt.checked) {
-      current8qt = newValue;
+    } else {
+      if (changedSliderId === 'slider8qt') current8qt = newValue;
+      if (changedSliderId === 'slider16qt') current16qt = newValue;
+      if (changedSliderId === 'slider24qt') current24qt = newValue;
     }
     
     updateDisplayedQuantities();
