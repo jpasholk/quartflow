@@ -6,6 +6,15 @@
     text-align: center;
 }
 
+.footer-content > *:last-child {
+    margin-top: -1rem;
+}
+
+.footer-content a {
+    color: #029AE8;
+    text-decoration: none;
+}
+
 /* Base input styles */
 .number-input,
 .qty-input {
@@ -41,4 +50,18 @@
         -webkit-appearance: none;
         margin: 0;
     }
+}
+
+.reset-button {
+    background-color: #029AE8;
+}
+
+.calculator-card > header {
+    background-color: #202632;
+}
+
+.calculator-card header progress {
+    margin-top: 0.5rem;
+    width: 100%;
+    background-color: #3D475C;
 }

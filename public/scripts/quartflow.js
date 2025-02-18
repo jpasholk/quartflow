@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const max24qt = document.getElementById('max24qt');
   const resetButton = document.getElementById('resetCalculator');
 
+  // Add progress bar elements to DOM references
+  const progress8qt = document.getElementById('progress8qt');
+  const progress16qt = document.getElementById('progress16qt');
+  const progress24qt = document.getElementById('progress24qt');
+
   let current8qt = 0;
   let current16qt = 0;
   let current24qt = 0;
@@ -117,6 +122,29 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDisplayedQuantities();
   }
 
+  function updateProgressBars() {
+    if (enable8qt.checked) {
+        const remainingPercent8qt = ((parseInt(slider8qt.max) - current8qt) / parseInt(slider8qt.max)) * 100;
+        progress8qt.value = Math.floor(remainingPercent8qt);
+    } else {
+        progress8qt.value = 100;
+    }
+
+    if (enable16qt.checked) {
+        const remainingPercent16qt = ((parseInt(slider16qt.max) - current16qt) / parseInt(slider16qt.max)) * 100;
+        progress16qt.value = Math.floor(remainingPercent16qt);
+    } else {
+        progress16qt.value = 100;
+    }
+
+    if (enable24qt.checked) {
+        const remainingPercent24qt = ((parseInt(slider24qt.max) - current24qt) / parseInt(slider24qt.max)) * 100;
+        progress24qt.value = Math.floor(remainingPercent24qt);
+    } else {
+        progress24qt.value = 100;
+    }
+}
+
   function updateDisplayedQuantities() {
     if (enable8qt.checked) {
       qty8qt.value = slider8qt.value;
@@ -143,6 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
     qty8qt.disabled = !enable8qt.checked;
     qty16qt.disabled = !enable16qt.checked;
     qty24qt.disabled = !enable24qt.checked;
+
+    updateProgressBars();
   }
 
   [enable8qt, enable16qt, enable24qt].forEach(checkbox => {
@@ -222,6 +252,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update UI
     updateMaximums();
     updateDisplayedQuantities();
+
+    progress8qt.value = 0;
+    progress16qt.value = 0;
+    progress24qt.value = 0;
   }
 
   // Add reset button event listener
