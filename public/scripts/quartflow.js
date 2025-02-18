@@ -19,30 +19,39 @@ document.addEventListener('DOMContentLoaded', () => {
   let current16qt = 0;
   let current24qt = 0;
 
+  // Get constants from data attribute
+  const calculator = document.getElementById('quartCalculator');
+  const QUART_CONSTANTS = JSON.parse(calculator.dataset.constants);
+
+  // Use constants in calculations
   function calculateTotalQuarts() {
     let totes = parseFloat(totesInput.value) || 0;
     let cuft = parseFloat(cuftInput.value) || 0;
-    return Math.floor(totes * cuft * 25.714);
+    return Math.floor(totes * cuft * QUART_CONSTANTS.quartsPerCubicFoot);
   }
 
   function updateMaximums() {
     let totalQuarts = calculateTotalQuarts();
-    let remainingQuarts = totalQuarts - (current8qt * 8 + current16qt * 16 + current24qt * 24);
+    let remainingQuarts = totalQuarts - (
+      current8qt * QUART_CONSTANTS.sizes.small + 
+      current16qt * QUART_CONSTANTS.sizes.medium + 
+      current24qt * QUART_CONSTANTS.sizes.large
+    );
 
     if (enable8qt.checked) {
-      let max8qtValue = Math.floor(remainingQuarts / 8) + current8qt;
+      let max8qtValue = Math.floor(remainingQuarts / QUART_CONSTANTS.sizes.small) + current8qt;
       slider8qt.max = max8qtValue;
       max8qt.textContent = max8qtValue;
     }
 
     if (enable16qt.checked) {
-      let max16qtValue = Math.floor(remainingQuarts / 16) + current16qt;
+      let max16qtValue = Math.floor(remainingQuarts / QUART_CONSTANTS.sizes.medium) + current16qt;
       slider16qt.max = max16qtValue;
       max16qt.textContent = max16qtValue;
     }
 
     if (enable24qt.checked) {
-      let max24qtValue = Math.floor(remainingQuarts / 24) + current24qt;
+      let max24qtValue = Math.floor(remainingQuarts / QUART_CONSTANTS.sizes.large) + current24qt;
       slider24qt.max = max24qtValue;
       max24qt.textContent = max24qtValue;
     }
@@ -52,9 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalQuarts = calculateTotalQuarts();
     
     if (!changedSliderId) {
-      slider8qt.max = Math.floor(totalQuarts / 8);
-      slider16qt.max = Math.floor(totalQuarts / 16);
-      slider24qt.max = Math.floor(totalQuarts / 24);
+      slider8qt.max = Math.floor(totalQuarts / QUART_CONSTANTS.sizes.small);
+      slider16qt.max = Math.floor(totalQuarts / QUART_CONSTANTS.sizes.medium);
+      slider24qt.max = Math.floor(totalQuarts / QUART_CONSTANTS.sizes.large);
       current8qt = 0;
       current16qt = 0;
       current24qt = 0;

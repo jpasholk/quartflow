@@ -1,21 +1,18 @@
 ---
+import { SITE } from '../consts';
 const { title, description } = Astro.props;
 import '../css/pico.min.css';
 import '../css/main.css';
-
-const defaultTitle = "QuartFlow - Bulk Quart Unit Calculator";
-const defaultDescription = "Efficiently calculate and allocate quart units from bulk totes. A simple tool for product distribution planning.";
-const siteUrl = "https://quartflow.jpshlk.com/"; 
 ---
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title || defaultTitle}</title>
+  <title>{title || SITE.title}</title>
 
   <!-- SEO -->
-  <meta name="description" content={description || defaultDescription} />
-  <link rel="canonical" href={siteUrl} />
+  <meta name="description" content={description || SITE.description} />
+  <link rel="canonical" href={SITE.url} />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -26,17 +23,17 @@ const siteUrl = "https://quartflow.jpshlk.com/";
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={siteUrl} />
-  <meta property="og:title" content={title || defaultTitle} />
-  <meta property="og:description" content={description || defaultDescription} />
-  <meta property="og:image" content={`${siteUrl}/og-image.png`} />
+  <meta property="og:url" content={SITE.url} />
+  <meta property="og:title" content={title || SITE.title} />
+  <meta property="og:description" content={description || SITE.description} />
+  <meta property="og:image" content={`${SITE.url}/og-image.png`} />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content={siteUrl} />
-  <meta property="twitter:title" content={title || defaultTitle} />
-  <meta property="twitter:description" content={description || defaultDescription} />
-  <meta property="twitter:image" content={`${siteUrl}/og-image.png`} />
+  <meta property="twitter:url" content={SITE.url} />
+  <meta property="twitter:title" content={title || SITE.title} />
+  <meta property="twitter:description" content={description || SITE.description} />
+  <meta property="twitter:image" content={`${SITE.url}/og-image.png`} />
 
   <!-- Styles -->
   <link rel="stylesheet" href="/css/pico.min.css" />
