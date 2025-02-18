@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const progress16qt = document.getElementById('progress16qt');
   const progress24qt = document.getElementById('progress24qt');
 
+  // Add DOM references
+  const totalCuFt = document.getElementById('totalCuFt');
+  const totalQuarts = document.getElementById('totalQuarts');
+
   let current8qt = 0;
   let current16qt = 0;
   let current24qt = 0;
@@ -173,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     qty24qt.disabled = !enable24qt.checked;
 
     updateProgressBars();
+    updateTotalDisplay();
   }
 
   [enable8qt, enable16qt, enable24qt].forEach(checkbox => {
@@ -197,7 +202,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   [totesInput, cuftInput].forEach(input => {
-    input.addEventListener('input', () => updateSliders());
+    input.addEventListener('input', () => {
+      updateTotalDisplay();
+      updateSliders();
+    });
   });
 
   function handleInputChange(input, slider, currentValue) {
@@ -256,10 +264,30 @@ document.addEventListener('DOMContentLoaded', () => {
     progress8qt.value = 0;
     progress16qt.value = 0;
     progress24qt.value = 0;
+
+    updateTotalDisplay();
   }
 
   // Add reset button event listener
   resetButton.addEventListener('click', resetCalculator);
 
+  function updateTotalDisplay() {
+    // Calculate used quarts
+    const usedQuarts = (current8qt * QUART_CONSTANTS.sizes.small) + 
+                      (current16qt * QUART_CONSTANTS.sizes.medium) + 
+                      (current24qt * QUART_CONSTANTS.sizes.large);
+    
+    // Calculate totals
+    const totalAvailableQuarts = calculateTotalQuarts();
+    const remainingQuarts = totalAvailableQuarts - usedQuarts;
+    const remainingCuFt = remainingQuarts / QUART_CONSTANTS.quartsPerCubicFoot;
+    
+    // Update display
+    totalCuFt.textContent = remainingCuFt.toFixed(1);
+    totalQuarts.textContent = remainingQuarts.toFixed(1);
+  }
+
+  // Initial update
+  updateTotalDisplay();
   updateSliders();
 });
