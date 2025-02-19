@@ -27,6 +27,18 @@
     align-self: start;
 }
 
+.quart-calculator.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 576px) {
+    .quart-calculator.grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
 /* Form Input Styling */
 .number-input,
 .qty-input {
@@ -93,6 +105,30 @@
 }
 
 /* Focus Management */
+/* Base focus styles */
+:focus {
+    outline: none;
+}
+
+/* Safari and WebKit specific focus styles */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 3px solid var(--pico-primary);
+    outline-offset: 2px;
+    -webkit-box-shadow: 0 0 0 3px var(--pico-primary);
+    box-shadow: 0 0 0 3px var(--pico-primary);
+}
+
+/* iOS Safari touch highlight prevention */
+@supports (-webkit-touch-callout: none) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
 /* Remove focus from grid container */
 .quart-calculator.grid:focus-within {
     outline: none;
