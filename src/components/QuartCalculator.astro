@@ -64,28 +64,28 @@ import { QUART_CONSTANTS } from '../consts';
           id="enable8qt"
           aria-controls="slider8qt qty8qt"
           aria-label="Enable 8 quart units">
-        <label for="slider8qt">8 QT Units (max: <span id="max8qt" aria-live="polite">0</span>):</label>
+        <label for="qty8qt">8 QT Units (max: <span id="max8qt">0</span>):</label>
         <progress id="progress8qt" value="0" max="100" aria-label="8 quart units remaining space" />
       </header>
       <input 
-        type="range" 
-        id="slider8qt" 
+        type="number" 
+        id="qty8qt" 
+        inputmode="numeric" 
+        pattern="[0-9]*" 
         min="0" 
-        max="100" 
-        value="0"
-        aria-label="Adjust 8 quart units"
-        aria-describedby="qty8qt">
+        step="1" 
+        value="0" 
+        class="qty-input"
+        aria-label="8 quart units quantity">
       <footer>
         <input 
-          type="number" 
-          id="qty8qt" 
-          inputmode="numeric" 
-          pattern="[0-9]*" 
+          type="range" 
+          id="slider8qt" 
           min="0" 
-          step="1" 
-          value="0" 
-          class="qty-input"
-          aria-label="8 quart units quantity">
+          max="100" 
+          value="0"
+          aria-label="Adjust 8 quart units"
+          aria-describedby="qty8qt">
       </footer>
     </article>
     <article class="calculator-card">
@@ -95,28 +95,28 @@ import { QUART_CONSTANTS } from '../consts';
           id="enable16qt"
           aria-controls="slider16qt qty16qt"
           aria-label="Enable 16 quart units">
-        <label for="slider16qt">16 QT Units (max: <span id="max16qt" aria-live="polite">0</span>):</label>
+        <label for="qty16qt">16 QT Units (max: <span id="max16qt">0</span>):</label>
         <progress id="progress16qt" value="0" max="100" aria-label="16 quart units remaining space" />
       </header>
       <input 
-        type="range" 
-        id="slider16qt" 
+        type="number" 
+        id="qty16qt" 
+        inputmode="numeric" 
+        pattern="[0-9]*" 
         min="0" 
-        max="100" 
-        value="0"
-        aria-label="Adjust 16 quart units"
-        aria-describedby="qty16qt">
+        step="1" 
+        value="0" 
+        class="qty-input"
+        aria-label="16 quart units quantity">
       <footer>
         <input 
-          type="number" 
-          id="qty16qt" 
-          inputmode="numeric" 
-          pattern="[0-9]*" 
+          type="range" 
+          id="slider16qt" 
           min="0" 
-          step="1" 
-          value="0" 
-          class="qty-input"
-          aria-label="16 quart units quantity">
+          max="100" 
+          value="0"
+          aria-label="Adjust 16 quart units"
+          aria-describedby="qty16qt">
       </footer>
     </article>
     <article class="calculator-card">
@@ -126,28 +126,28 @@ import { QUART_CONSTANTS } from '../consts';
           id="enable24qt"
           aria-controls="slider24qt qty24qt"
           aria-label="Enable 24 quart units">
-        <label for="slider24qt">24 QT Units (max: <span id="max24qt" aria-live="polite">0</span>):</label>
+        <label for="qty24qt">24 QT Units (max: <span id="max24qt">0</span>):</label>
         <progress id="progress24qt" value="0" max="100" aria-label="24 quart units remaining space" />
       </header>
       <input 
-        type="range" 
-        id="slider24qt" 
+        type="number" 
+        id="qty24qt" 
+        inputmode="numeric" 
+        pattern="[0-9]*" 
         min="0" 
-        max="100" 
-        value="0"
-        aria-label="Adjust 24 quart units"
-        aria-describedby="qty24qt">
+        step="1" 
+        value="0" 
+        class="qty-input"
+        aria-label="24 quart units quantity">
       <footer>
         <input 
-          type="number" 
-          id="qty24qt" 
-          inputmode="numeric" 
-          pattern="[0-9]*" 
+          type="range" 
+          id="slider24qt" 
           min="0" 
-          step="1" 
-          value="0" 
-          class="qty-input"
-          aria-label="24 quart units quantity">
+          max="100" 
+          value="0"
+          aria-label="Adjust 24 quart units"
+          aria-describedby="qty24qt">
       </footer>
     </article>
   </div>
