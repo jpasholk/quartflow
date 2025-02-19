@@ -78,3 +78,7 @@
     gap: 1rem;
     align-items: center;
 }
+
+.divider-grid hgroup:last-child {
+    align-self: start;
+}
