@@ -62,11 +62,12 @@ article[role="group"] {
 
 @media (max-width: 576px) {
     .reset-container {
-        align-self: center;
+        /* align-self: center; */
+        align-self: start;
     }
     .reset-button {
         font-size: 0.875rem;  /* 14px */
-        /* padding: 0.5rem 0.75rem; */
+        padding: 0.5rem 0.75rem;
     }
     .divider-grid {
         position: sticky;
@@ -74,6 +75,24 @@ article[role="group"] {
         z-index: 100;
         background-color: var(--pico-background-color);
         padding-top: 1rem;
+        align-items: start;
+    }
+}
+
+@media (max-width: 390px) {
+    .reset-button {
+        font-size: 0.875rem;
+        padding: .35rem .5rem;  
+    }
+    .divider-grid {
+        align-items: start;
+    }
+}
+
+@media (max-width: 320px) {
+    .reset-button {
+        font-size: 0.675rem;
+        padding: .35rem .5rem;  
     }
 }
 
@@ -195,5 +214,17 @@ article[role="group"] {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+}
+
+/* Base style for all browsers */
+.totals-hgroup p {
+    color: var(--pico-muted-color);
+}
+
+/* Modern browsers that support :has */
+@supports selector(:has) {
+    hgroup:has(#calculator-title) p {
+        color: var(--pico-muted-color);
     }
 }
