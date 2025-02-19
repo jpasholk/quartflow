@@ -8,17 +8,18 @@ import { QUART_CONSTANTS } from '../consts';
   role="main"
   aria-labelledby="calculator-title"
 >
-  <div class="grid divider-grid">
-    <hgroup>
-      <h3 id="calculator-title">Total Cubic Feet: <span id="totalCuFt" aria-live="polite">62</span> Cubic Feet</h3>
-      <p>Total Quarts: <span id="totalQuarts" aria-live="polite">1594.3</span> US Dry Quarts</p>
-    </hgroup>
-    <div class="vertical-divider" role="separator"></div>
-    <hgroup>
-      <h3>1 Cubic Foot</h3>
-      <p>Has 25.714 US dry quarts.</p>
-    </hgroup>
-  </div>
+
+    <div class="grid divider-grid sticky">
+      <hgroup>
+        <h3 id="calculator-title">Total Cubic Feet: <span id="totalCuFt" aria-live="polite">62</span> Cubic Feet</h3>
+        <p>Total Quarts: <span id="totalQuarts" aria-live="polite">1594.3</span> US Dry Quarts</p>
+      </hgroup>
+      <div class="vertical-divider" role="separator"></div>
+      <hgroup>
+        <h3>1 Cubic Foot</h3>
+        <p>Has 25.714 US dry quarts.</p>
+      </hgroup>
+    </div>
 
   <p id="calculator-instructions">Enter the number of totes, and cubic feet per tote, then check the boxes of the sizes you want to calculate.</p>
   
@@ -149,14 +150,6 @@ import { QUART_CONSTANTS } from '../consts';
           aria-label="24 quart units quantity">
       </footer>
     </article>
-  </div>
-  <div class="reset-container">
-    <button 
-      id="resetCalculator" 
-      class="reset-button"
-      aria-label="Reset calculator values">
-      Reset All Values
-    </button>
   </div>
 </div>
 

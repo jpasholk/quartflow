@@ -23,9 +23,21 @@
     align-items: center;
 }
 
+.header-divider-grid {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+
+
 .divider-grid hgroup:last-child {
     align-self: start;
 }
+
+.reset-container {
+    justify-self: end;
+}
+
 
 .quart-calculator.grid {
     display: grid;
@@ -33,9 +45,31 @@
     gap: 1rem;
 }
 
+article[role="group"] {
+    background-color: var(--pico-card-background-color);
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.15),
+        0 2px 4px -2px rgb(0 0 0 / 0.15),
+        0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+
 @media (min-width: 576px) {
     .quart-calculator.grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .reset-container {
+        align-self: center;
+    }
+    .divider-grid {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: var(--pico-background-color);
+        padding-top: 1rem;
     }
 }
 
