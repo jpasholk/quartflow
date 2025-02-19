@@ -5,20 +5,25 @@ import { QUART_CONSTANTS } from '../consts';
 <div 
   id="quartCalculator"
   data-constants={JSON.stringify(QUART_CONSTANTS)}
+  role="main"
+  aria-labelledby="calculator-title"
 >
   <div class="grid divider-grid">
     <hgroup>
-      <h3>Total Cubic Feet: <span id="totalCuFt">62</span> Cubic Feet</h3>
-      <p>Total Quarts: <span id="totalQuarts">1594.3</span> US Dry Quarts</p>
+      <h3 id="calculator-title">Total Cubic Feet: <span id="totalCuFt" aria-live="polite">62</span> Cubic Feet</h3>
+      <p>Total Quarts: <span id="totalQuarts" aria-live="polite">1594.3</span> US Dry Quarts</p>
     </hgroup>
-    <div class="vertical-divider"></div>
+    <div class="vertical-divider" role="separator"></div>
     <hgroup>
       <h3>1 Cubic Foot</h3>
       <p>Has 25.714 US dry quarts.</p>
     </hgroup>
   </div>
-  <p>Enter the number of totes, and cubic feet per tote, then check the boxes of the sizes you want to calculate.</p>
-  <article>
+
+  <p id="calculator-instructions">Enter the number of totes, and cubic feet per tote, then check the boxes of the sizes you want to calculate.</p>
+  
+  <article role="group" aria-labelledby="input-section">
+    <h4 id="input-section" class="sr-only">Tote Input Section</h4>
     <div class="quart-calculator grid">
       <div>
         <label for="totes">Number of Totes:</label>
@@ -29,7 +34,9 @@ import { QUART_CONSTANTS } from '../consts';
           pattern="[0-9]*" 
           min="1" 
           value="1"
-          class="number-input">
+          class="number-input"
+          aria-describedby="totes-description">
+        <span id="totes-description" class="sr-only">Enter the number of totes to calculate</span>
       </div>
       <div>
         <label for="cuft">Cubic Feet per Tote:</label>
@@ -41,70 +48,118 @@ import { QUART_CONSTANTS } from '../consts';
           min="0" 
           step="1" 
           value="62"
-          class="number-input">
+          class="number-input"
+          aria-describedby="cuft-description">
+        <span id="cuft-description" class="sr-only">Enter the cubic feet per tote</span>
       </div> 
     </div>
   </article>
-  <div class="quart-calculator grid">
+
+  <div class="quart-calculator grid" role="group" aria-labelledby="calculator-instructions">
     <article class="calculator-card">
       <header>
-        <input type="checkbox" id="enable8qt">
-        <label for="slider8qt">8 QT Units (max: <span id="max8qt">0</span>):</label>
-        <progress id="progress8qt" value="0" max="100" />
+        <input 
+          type="checkbox" 
+          id="enable8qt"
+          aria-controls="slider8qt qty8qt"
+          aria-label="Enable 8 quart units">
+        <label for="slider8qt">8 QT Units (max: <span id="max8qt" aria-live="polite">0</span>):</label>
+        <progress id="progress8qt" value="0" max="100" aria-label="8 quart units remaining space" />
       </header>
-      <input type="range" id="slider8qt" min="0" max="100" value="0">
+      <input 
+        type="range" 
+        id="slider8qt" 
+        min="0" 
+        max="100" 
+        value="0"
+        aria-label="Adjust 8 quart units"
+        aria-describedby="qty8qt">
       <footer>
-        <input type="number" 
+        <input 
+          type="number" 
           id="qty8qt" 
           inputmode="numeric" 
           pattern="[0-9]*" 
           min="0" 
           step="1" 
           value="0" 
-          class="qty-input">
+          class="qty-input"
+          aria-label="8 quart units quantity">
       </footer>
     </article>
     <article class="calculator-card">
       <header>
-        <input type="checkbox" id="enable16qt">
-        <label for="slider16qt">16 QT Units (max: <span id="max16qt">0</span>):</label>
-        <progress id="progress16qt" value="0" max="100" />
+        <input 
+          type="checkbox" 
+          id="enable16qt"
+          aria-controls="slider16qt qty16qt"
+          aria-label="Enable 16 quart units">
+        <label for="slider16qt">16 QT Units (max: <span id="max16qt" aria-live="polite">0</span>):</label>
+        <progress id="progress16qt" value="0" max="100" aria-label="16 quart units remaining space" />
       </header>
-      <input type="range" id="slider16qt" min="0" max="100" value="0">
+      <input 
+        type="range" 
+        id="slider16qt" 
+        min="0" 
+        max="100" 
+        value="0"
+        aria-label="Adjust 16 quart units"
+        aria-describedby="qty16qt">
       <footer>
-        <input type="number" 
+        <input 
+          type="number" 
           id="qty16qt" 
           inputmode="numeric" 
           pattern="[0-9]*" 
           min="0" 
           step="1" 
           value="0" 
-          class="qty-input">
+          class="qty-input"
+          aria-label="16 quart units quantity">
       </footer>
     </article>
     <article class="calculator-card">
       <header>
-        <input type="checkbox" id="enable24qt">
-        <label for="slider24qt">24 QT Units (max: <span id="max24qt">0</span>):</label>
-        <progress id="progress24qt" value="0" max="100" />
+        <input 
+          type="checkbox" 
+          id="enable24qt"
+          aria-controls="slider24qt qty24qt"
+          aria-label="Enable 24 quart units">
+        <label for="slider24qt">24 QT Units (max: <span id="max24qt" aria-live="polite">0</span>):</label>
+        <progress id="progress24qt" value="0" max="100" aria-label="24 quart units remaining space" />
       </header>
-      <input type="range" id="slider24qt" min="0" max="100" value="0">
+      <input 
+        type="range" 
+        id="slider24qt" 
+        min="0" 
+        max="100" 
+        value="0"
+        aria-label="Adjust 24 quart units"
+        aria-describedby="qty24qt">
       <footer>
-        <input type="number" 
+        <input 
+          type="number" 
           id="qty24qt" 
           inputmode="numeric" 
           pattern="[0-9]*" 
           min="0" 
           step="1" 
           value="0" 
-          class="qty-input">
+          class="qty-input"
+          aria-label="24 quart units quantity">
       </footer>
     </article>
   </div>
   <div class="reset-container">
-    <button id="resetCalculator" class="reset-button">Reset All Values</button>
+    <button 
+      id="resetCalculator" 
+      class="reset-button"
+      aria-label="Reset calculator values">
+      Reset All Values
+    </button>
   </div>
 </div>
+
 <script is:inline src="/scripts/quartflow.js"></script>
 
 
