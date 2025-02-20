@@ -1,5 +1,7 @@
 # QuartFlow
 
+![QuartFlow Screenshots](https://github.com/jpasholk/quartflow/blob/master/src/assets/QuartFlow-Screenshots.png?raw=true)
+
 QuartFlow is a simple JavaScript application designed to simplify bulk product distribution calculations. This tool allows users to efficiently allocate quart units from bulk totes, providing real-time adjustments and visualizations.
 
 ## Features
